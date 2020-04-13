@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class NombreOccurence {
+	
 	public static HashMap<String,Integer> coOccurence(HashMap<Integer,ArrayList<DoubleString>>HashMapCroisementMot) {
 		HashMap <String,Integer>tableau = new HashMap<String,Integer>();
 		for(int i=0;i<HashMapCroisementMot.size();i++) {

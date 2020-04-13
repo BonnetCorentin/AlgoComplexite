@@ -21,18 +21,21 @@ public class Main {
 		
 		System.setProperty("org.graphstream.ui.renderer", "org.graphstream.ui.j2dviewer.J2DGraphRenderer");
 
-		Viewer viewer = graph.display();
+		//Viewer viewer = graph.display();
 		
 
-		
+		StopWords stopWords = new StopWords("StopWords/FrenchEnglishSW.txt");
+		ArrayList <String> arraySW= stopWords.arrayListOfWordSW();
 
 		Fichier fichier = new Fichier("Articles/test.txt");
-		ArrayList <String> array= fichier.arrayListOfWord();
+		ArrayList <String> arrayWord= fichier.arrayListOfWord();
+		
+		ArrayList <String> array= ApparitionMot.suppStopWords(arrayWord, arraySW);
 		
 		Hashtable<String,Integer>redondance=ApparitionMot.redondanceMot(array);
 		Hashtable<String,Float>redondanceFrequence=ApparitionMot.redondanceMotFrequence(redondance);
 		
-		/*try { 
+		try { 
 			redondance.forEach((k,v) -> { 
             System.out.println (k + " : " + v + " occurences du mot");
 	 			}); 
@@ -51,7 +54,7 @@ public class Main {
 	      catch (Exception e) { 
 	    	  System.out.println("Exception: " + e); 
 	      }
-		System.out.println();*/
+		System.out.println();
 	
 		try { 
 			 fichier.TopKOccurence().forEach((k, v) -> { 
