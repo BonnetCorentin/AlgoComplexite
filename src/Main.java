@@ -23,21 +23,12 @@ public class Main {
 		
 		System.setProperty("org.graphstream.ui.renderer", "org.graphstream.ui.j2dviewer.J2DGraphRenderer");
 
-		//Viewer viewer = graph.display();
-		
-		Thesaurus fichierDico = new Thesaurus("thesaurus-v2.3/thes_fr.dat");
-		ArrayList<String> dico = fichierDico.arrayListOfWordThe();
-		
-		System.out.println(dico);*/
+		//Viewer viewer = graph.display();		*/
 
 		Fichier fichier = new Fichier("Articles/test.txt");
-		ArrayList <String> arrayWord= fichier.arrayListOfWord();
+		ArrayList<String>[] listePhrase = fichier.arrayListOfWord();
 		
-		
-		
-		/*ArrayList <String> array= ApparitionMot.suppStopWords(arrayWord, arraySW);
-		
-		Hashtable<String,Integer>redondance=ApparitionMot.redondanceMot(array);
+		Hashtable<String,Integer>redondance=ApparitionMot.redondanceMot(listePhrase);
 		Hashtable<String,Float>redondanceFrequence=ApparitionMot.redondanceMotFrequence(redondance);
 		
 		try { 
@@ -60,9 +51,10 @@ public class Main {
 	    	  System.out.println("Exception: " + e); 
 	      }
 		System.out.println();
-	
+		HashMap<Integer, ArrayList<DoubleString>>a=NombreOccurence.coOccurence(listePhrase);
+
 		try { 
-			 fichier.TopKOccurence().forEach((k, v) -> { 
+			 a.forEach((k, v) -> { 
 				 System.out.print (k+" : ");
 				 for(DoubleString compteur:v) {
 					 System.out.print(compteur.ToString()+" ");
@@ -77,7 +69,7 @@ public class Main {
 		
 		System.out.println();
 		
-		HashMap<String,Integer> hm = NombreOccurence.coOccurence(fichier.TopKOccurence());
+		HashMap<String,Integer> hm = NombreOccurence.TopKOccurence(a);
 		
 		try { 
 			hm.forEach((k, v) -> { 
@@ -91,6 +83,6 @@ public class Main {
 		System.out.println();
 		
 		StopWords sw = new StopWords("StopWords/FrenchEnglishSW.txt");
-		System.out.println(sw.verif("je"));*/
+		System.out.println(sw.verif("je"));
 	} 
 }
