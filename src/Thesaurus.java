@@ -33,16 +33,16 @@ public class Thesaurus {
 		}
 	}
 	
-	public ArrayList<String> arrayListOfWordSW () {
-		ArrayList<String> arrayOfWordSW= new ArrayList<>();
+	public ArrayList<String> arrayListOfWordThe () {
+		ArrayList<String> arrayOfWordThe= new ArrayList<>();
 		String line;
 		debutTraitement ();
 		
 		try {	
 		    while ((line = bufferLectureT.readLine()) != null) {
-		    	String[] wordsLine = line.toLowerCase().split(" ");
+		    	String[] wordsLine = line.toLowerCase().split(" |1");
 		    	for (int i=0; i<wordsLine.length;i++){
-		    		arrayOfWordSW.add(wordsLine[i]);
+		    		arrayOfWordThe.add(wordsLine[i]);
 		    	}
 		    }
 		}
@@ -51,7 +51,7 @@ public class Thesaurus {
 		}		
 		
 		finDeTraitement ();
-		return arrayOfWordSW;
+		return arrayOfWordThe;
 		
 	}
 }

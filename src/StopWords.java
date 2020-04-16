@@ -8,10 +8,12 @@ public class StopWords {
 	
 	private String nomFichierSW;
 	private BufferedReader bufferLectureSW;
+	private ArrayList<String> arrayOfWordSW= new ArrayList<>();
 	
 	
 	public StopWords (String nomFichierSW) {
 		this.nomFichierSW = nomFichierSW;
+		this.arrayListOfWordSW();
 	}
 	
 	public void debutTraitement () {
@@ -34,8 +36,8 @@ public class StopWords {
 	}
 	
 	public ArrayList<String> arrayListOfWordSW () {
-		ArrayList<String> arrayOfWordSW= new ArrayList<>();
 		String line;
+		
 		debutTraitement ();
 		
 		try {	
@@ -52,6 +54,9 @@ public class StopWords {
 		
 		finDeTraitement ();
 		return arrayOfWordSW;
-		
+	}
+	
+	public Boolean verif(String e) {
+		return arrayOfWordSW.contains(e);
 	}
 }

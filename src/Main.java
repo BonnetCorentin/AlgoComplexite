@@ -9,8 +9,10 @@ import java.util.Hashtable;
 public class Main {
 
 	public static void main(String[] args) {
+		
+		
 
-		Graph graph = new SingleGraph("Tutorial 1");
+		/*Graph graph = new SingleGraph("Tutorial 1");
 		
 		graph.addNode("A" );
 		graph.addNode("B" );
@@ -23,14 +25,17 @@ public class Main {
 
 		//Viewer viewer = graph.display();
 		
-
-		StopWords stopWords = new StopWords("StopWords/FrenchEnglishSW.txt");
-		ArrayList <String> arraySW= stopWords.arrayListOfWordSW();
+		Thesaurus fichierDico = new Thesaurus("thesaurus-v2.3/thes_fr.dat");
+		ArrayList<String> dico = fichierDico.arrayListOfWordThe();
+		
+		System.out.println(dico);*/
 
 		Fichier fichier = new Fichier("Articles/test.txt");
 		ArrayList <String> arrayWord= fichier.arrayListOfWord();
 		
-		ArrayList <String> array= ApparitionMot.suppStopWords(arrayWord, arraySW);
+		
+		
+		/*ArrayList <String> array= ApparitionMot.suppStopWords(arrayWord, arraySW);
 		
 		Hashtable<String,Integer>redondance=ApparitionMot.redondanceMot(array);
 		Hashtable<String,Float>redondanceFrequence=ApparitionMot.redondanceMotFrequence(redondance);
@@ -84,5 +89,8 @@ public class Main {
 	    	  System.out.println("Exception: " + e); 
 	      }
 		System.out.println();
+		
+		StopWords sw = new StopWords("StopWords/FrenchEnglishSW.txt");
+		System.out.println(sw.verif("je"));*/
 	} 
 }
