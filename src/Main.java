@@ -41,7 +41,7 @@ public class Main {
 		}
 		System.out.println();
 		
-		try { 
+		/*try {
 				redondanceFrequence.forEach((k, v) -> { 
 				 System.out.println (k+" : "+v+"% fréquence du mot");
 			 }
@@ -80,9 +80,7 @@ public class Main {
 	      catch (Exception e) { 
 	    	  System.out.println("Exception: " + e); 
 	      }
-		System.out.println();
+		System.out.println();*/
 		
-		StopWords sw = new StopWords("StopWords/FrenchEnglishSW.txt");
-		System.out.println(sw.verif("je"));
 	} 
 }
