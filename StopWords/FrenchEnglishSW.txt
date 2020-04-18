@@ -69,6 +69,8 @@ je
 juste
 la
 le
+une
+un
 les
 leur
 là
