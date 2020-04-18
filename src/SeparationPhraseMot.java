@@ -3,15 +3,22 @@ import java.util.ArrayList;
 public class SeparationPhraseMot {
 	static public ArrayList<String> SeparationMot(String phrase) {
 		ArrayList<String> motParPhrase = new ArrayList<String>();
-		StopWords sw = new StopWords("StopWords/FrenchEnglishSW.txt");
 		
-		String[] separateur = phrase.toLowerCase().split(" ");
-		for (int i=0;i<separateur.length;i++) {
-			if(!sw.verif(separateur[i])) {
-				motParPhrase.add(separateur[i]);
+		StopWords sw = new StopWords("StopWords/FrenchEnglishSW.txt");
+		String[] separateur = phrase.toLowerCase().split("[|,|“|’|”|;|:|\"|'|+|*|-|«|»|(|)|{|}|]");
+		phrase=new String ();
+		phrase = separateur[0].trim();
+		for (int j=1;j<separateur.length;j++) {
+			phrase=phrase+" "+separateur[j].trim ();
+		}
+		System.out.println(phrase);
+		String[] separateur2 = phrase.toLowerCase().split(" ");
+		for (int i=0;i<separateur2.length;i++) {
+			separateur2[i]=separateur2[i].trim();
+			if(!sw.verif(separateur2[i])) {
+				motParPhrase.add(separateur2[i]);
 			}
 		}
-			
 		return motParPhrase;
 	}
 	
@@ -19,13 +26,6 @@ public class SeparationPhraseMot {
 			
 			String[] separateur = fichier.toLowerCase().split("[|.|!|?|]");
 			for (int i=0;i<separateur.length;i++) {
-				
-				String[] separateur2 = separateur[i].toLowerCase().split("[|,|;|:|\"|'|-|«|»|(|)|{|}|]");
-				separateur[i]=new String ();
-				for (int j=0;j<separateur2.length;j++) {
-					separateur2[j]=separateur2[j].trim ();
-					separateur[i]=separateur[i]+" "+separateur2[j];
-				}
 				separateur[i]=separateur[i].trim();
 			}
 				

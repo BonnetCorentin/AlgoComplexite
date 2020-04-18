@@ -1,6 +1,9 @@
-au
+﻿au
+ne
+uns
 aux
 celles
+plusieurs
 ceux
 ai
 cependant
@@ -21,6 +24,7 @@ au
 aucuns
 aussi
 autre
+autres
 avant
 avec
 avoir
@@ -76,7 +80,6 @@ mes
 mien
 moins
 mon
-mot
 même
 ni
 nommés
@@ -1008,7 +1011,5 @@ whim
 whod
 whos
 widely
-words
-world
 youd
 youre

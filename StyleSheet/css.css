@@ -1,0 +1,13 @@
+graph {
+	
+}
+
+node {
+	text-style: bold-italic;
+	text-size: 20;
+	text-background-mode: plain;
+	size: 10px, 15px;
+	shape: box;
+	stroke-mode: plain;
+	stroke-color: yellow;
+}

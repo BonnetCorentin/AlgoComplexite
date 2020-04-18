@@ -1,30 +1,17 @@
 import java.util.ArrayList;
-import org.graphstream.graph.*;
-import org.graphstream.graph.implementations.SingleGraph;
-import org.graphstream.ui.view.Viewer;
 
 import java.util.HashMap;
 import java.util.Hashtable;
 
+import org.graphstream.graph.*;
+import org.graphstream.graph.implementations.*;
+
+
+
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) {	
 		
-		
-
-		/*Graph graph = new SingleGraph("Tutorial 1");
-		
-		graph.addNode("A" );
-		graph.addNode("B" );
-		graph.addNode("C" );
-		graph.addEdge("AB", "A", "B");
-		graph.addEdge("BC", "B", "C");
-		graph.addEdge("CA", "C", "A");
-		
-		System.setProperty("org.graphstream.ui.renderer", "org.graphstream.ui.j2dviewer.J2DGraphRenderer");
-
-		//Viewer viewer = graph.display();		*/
-
 		Fichier fichier = new Fichier("Articles/test.txt");
 		ArrayList<String>[] listePhrase = fichier.arrayListOfWord();
 		
@@ -70,19 +57,33 @@ public class Main {
 		System.out.println();
 		
 		HashMap<String,Integer> hm = NombreOccurence.TopKOccurence(a);
-		
+		Graph graph = new SingleGraph("Tutorial 1");
 		try { 
 			hm.forEach((k, v) -> { 
-				System.out.println(k+" apparait :"+v+" fois");
+				
+					String[] b = k.split("=");
+					b[0]=b[0].trim();
+					b[1]=b[1].trim();
+					System.out.println(k+" apparait :"+v+" fois");
+					if (graph.getNode(b[0]) == null)
+						graph.addNode(b[0]);
+					if (graph.getNode(b[1]) == null)
+						graph.addNode(b[1]);
+					graph.addEdge(b[0]+b[1], b[0], b[1]);
+				
 			 }
 			); 
 	      } 
 	      catch (Exception e) { 
 	    	  System.out.println("Exception: " + e); 
 	      }
-		System.out.println();
+		System.out.println();		
+		graph.addAttribute("ui.stylesheet", "url('file:/C:/Users/coren/Documents/Cours 3A/Algo et complexité/AlgoComplexite/StyleSheet/css.css')");
+
+		for (Node nd: graph) {
+			nd.addAttribute("ui.label", nd.getId());
+		}
 		
-		StopWords sw = new StopWords("StopWords/FrenchEnglishSW.txt");
-		System.out.println(sw.verif("je"));
-	} 
+		graph.display();
+	}     
 }
