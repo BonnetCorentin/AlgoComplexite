@@ -28,7 +28,7 @@ public class Main {
 		}
 		System.out.println();
 		
-		try { 
+		/*try {
 				redondanceFrequence.forEach((k, v) -> { 
 				 System.out.println (k+" : "+v+"% fréquence du mot");
 			 }
@@ -77,6 +77,7 @@ public class Main {
 	      catch (Exception e) { 
 	    	  System.out.println("Exception: " + e); 
 	      }
+
 		System.out.println();		
 		graph.addAttribute("ui.stylesheet", "url('file:/C:/Users/coren/Documents/Cours 3A/Algo et complexité/AlgoComplexite/StyleSheet/css.css')");
 
@@ -86,4 +87,9 @@ public class Main {
 		
 		graph.display();
 	}     
+
+		System.out.println();*/
+		
+	} 
+
 }
