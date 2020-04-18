@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.ArrayList;
 
 import java.util.HashMap;
@@ -28,7 +29,7 @@ public class Main {
 		}
 		System.out.println();
 		
-		/*try {
+		try {
 				redondanceFrequence.forEach((k, v) -> { 
 				 System.out.println (k+" : "+v+"% fréquence du mot");
 			 }
@@ -55,7 +56,7 @@ public class Main {
 	      }
 		
 		System.out.println();
-		
+
 		HashMap<String,Integer> hm = NombreOccurence.TopKOccurence(a);
 		Graph graph = new SingleGraph("Tutorial 1");
 		try { 
@@ -65,12 +66,14 @@ public class Main {
 					b[0]=b[0].trim();
 					b[1]=b[1].trim();
 					System.out.println(k+" apparait :"+v+" fois");
-					if (graph.getNode(b[0]) == null)
+					if (graph.getNode(b[0]) == null) //ajoute un noeud
 						graph.addNode(b[0]);
-					if (graph.getNode(b[1]) == null)
+					if (graph.getNode(b[1]) == null) //ajoute un noeud
 						graph.addNode(b[1]);
-					graph.addEdge(b[0]+b[1], b[0], b[1]);
-				
+						graph.addEdge(b[0]+b[1], b[0], b[1]);	//ajoute les arrêtes
+					if(v>3){
+						graph.getEdge(b[0]+b[1]).addAttribute("ui.style", "fill-color: red; text-color: red;");
+						}
 			 }
 			); 
 	      } 
@@ -78,18 +81,17 @@ public class Main {
 	    	  System.out.println("Exception: " + e); 
 	      }
 
+		File fileCss = new File("StyleSheet/css.css");
+		String path = fileCss.getAbsolutePath();
+		
 		System.out.println();		
-		graph.addAttribute("ui.stylesheet", "url('file:/C:/Users/coren/Documents/Cours 3A/Algo et complexité/AlgoComplexite/StyleSheet/css.css')");
-
+		graph.addAttribute("ui.stylesheet", "url('"+path+"')");
 		for (Node nd: graph) {
 			nd.addAttribute("ui.label", nd.getId());
 		}
+
 		
 		graph.display();
 	}     
-
-		System.out.println();*/
-		
-	} 
 
 }

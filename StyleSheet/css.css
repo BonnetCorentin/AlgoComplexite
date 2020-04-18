@@ -1,10 +1,10 @@
 graph {
-	
+
 }
 
 node {
 	text-style: bold-italic;
-	text-size: 20;
+	text-size: 15;
 	text-background-mode: plain;
 	size: 10px, 15px;
 	shape: box;
