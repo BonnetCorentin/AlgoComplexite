@@ -66,9 +66,9 @@ public class Thesaurus {
 		return tempo;
 	}
 	
-	static HashMap<String,List<String>> hm = new HashMap<String,List<String>>();
+	static HashMap<String,ArrayList<String>> hm = new HashMap<String,ArrayList<String>>();
 	
-	public HashMap<String,List<String>> creationHmSynonyme(){
+	public HashMap<String,ArrayList<String>> creationHmSynonyme(ArrayList<String>[] listePhrase){
 		String line;
 		int i=0;
 		String[] wordsLine = new String[3];
@@ -84,10 +84,17 @@ public class Thesaurus {
 		    	}
 		    	else {
 		    		wordsLine2 = line.toLowerCase().split("[|]");
-		    		for(int j=0;j<wordsLine2.length;j++) {
-		    			listWord.add(wordsLine2[i]);
+		    		for(int j=1;j<wordsLine2.length;j++) {
+		    			listWord.add(wordsLine2[j]);
 		    		}
-		    		hm.put(wordsLine[0],listWord);
+		    		Boolean estDansTexte = false;
+		    		for (int x=0;x<listePhrase.length;x++) {
+		    			if(listePhrase[x].contains(wordsLine[0].toLowerCase())) {
+		    				estDansTexte = true;
+		    			}
+		    		}
+		    		if (estDansTexte)
+		    			hm.put(wordsLine[0],listWord);
 		    		i=0;
 		    	}
 		    }
@@ -98,17 +105,6 @@ public class Thesaurus {
 		
 		finDeTraitement ();
 		return hm;
-	}
-	
-	public ArrayList<String> retourneTabSyn(String mot){
-		ArrayList<String> array = new ArrayList<>();
-		
-		if(!array.contains(mot)) {
-			for(int i=1;i<hm.get(mot).size();i++) {	//Commence a 1 sinon espace blanc dans array
-				array.add(hm.get(mot).get(i));
-			}
-		}
-		return array;
 	}
 	
 	public Boolean verifContientSyn(Hashtable<String,Integer> hashtable, String value) { //Mauvaise taille hashtable
@@ -125,33 +121,5 @@ public class Thesaurus {
 		return hm.containsKey(e);
 	}
 
-	/*public ArrayList<String> arrayListSynValue(String key){
-		String split2 = key + "|key";
-		ArrayList<String> arrayOfWordTheSyn = arrayOfWordThe;
-		for(int i=0;i<arrayOfWordThe.size();i++) {
-			if(arrayOfWordThe.get(i) == split2) {
-				arrayOfWordTheSyn.remove(i);
-			}
-		}
-		return arrayOfWordTheSyn;
-	}
-	
-	public ArrayList<String> arrayListSynKey(String valeur){
-		String split2 ="+value|"+valeur;
-		ArrayList<String> arrayOfWordTheSyn = arrayOfWordThe;
-		for(int i=0;i<arrayOfWordThe.size();i++) {
-			if(arrayOfWordThe.get(i) == split2) {
-				arrayOfWordTheSyn.remove(i);
-			}
-		}
-		return arrayOfWordTheSyn;
-	}
-	
-	public String splitBarre(String line) {
-		String synonyme;
-		String[] wordsLine = line.toLowerCase().split(" ");
-		for(int i=0;i<arrayOfWordThe.size();i++) {
-			synonyme = 
-		}
-	}*/
+
 }

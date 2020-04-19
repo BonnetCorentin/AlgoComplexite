@@ -11,24 +11,36 @@ public class ApparitionMot {
 		
 		
 		Hashtable<String,Integer> hashtable= new Hashtable<String,Integer>();	
-		//ArrayList<String> tempo = the.arrayListOfWordThe();
 		ArrayList<String> synonyme = new ArrayList<String>();
-		java.util.HashMap<String, List<String>> hmSynonyme = the.creationHmSynonyme();
-		System.out.println(hmSynonyme);
+		java.util.HashMap<String, ArrayList<String>> hmSynonyme = the.creationHmSynonyme(listePhrase);
+		try {
+		hmSynonyme.forEach((k, v) -> { 
+		 System.out.println ("Synonyme de "+k);
+		 for (String mot:v) {
+			 System.out.print(mot+" ");
+		 }
+		 System.out.println();
+		}
+			); 
+		} 
+		catch (Exception e) { 
+			System.out.println("Exception: " + e); 
+		}
 		
 		
 		for (int i=0;i<listePhrase.length;i++) {
 			for (int j=0;j<listePhrase[i].size();j++) {
 				boolean synonymeDejaPresent = false;
-				if(the.verif(listePhrase[i].get(j))){
-				    synonyme = the.retourneTabSyn(listePhrase[i].get(j));
-				    for (String s : synonyme){
-				        if(hashtable.containsKey(s) && !synonymeDejaPresent){
-				            hashtable.replace(s,hashtable.get(s)+1);
-				            synonymeDejaPresent = true;
-				        }
-				    }
-				}
+					String ki = listePhrase[i].get(j);
+				    synonyme = hmSynonyme.get(ki);
+				    if (synonyme != null)
+					    for (String s : synonyme){
+					        if(hashtable.containsKey(s) && !synonymeDejaPresent){
+					            hashtable.replace(s,hashtable.get(s)+1);
+					            synonymeDejaPresent = true;
+					        }
+					    }
+				
 				if ((the.verif(listePhrase[i].get(j)) && !synonymeDejaPresent) || !the.verif(listePhrase[i].get(j))){
 				    if(hashtable.containsKey(listePhrase[i].get(j))){
 				        hashtable.replace(listePhrase[i].get(j), hashtable.get(listePhrase[i].get(j))+1);
@@ -40,21 +52,17 @@ public class ApparitionMot {
 				
 			}
 		}
-		System.out.println(synonyme);
-		//System.out.println(hashtable);
+		if (synonyme != null)
 		for(int z=0; z<synonyme.size();z++) {
 			
-			if(hashtable.containsKey(synonyme.get(z))) { //condition tjrs vraie 
-			//si synonyme apparait dans le texte
+			if(hashtable.containsKey(synonyme.get(z))) { 
 				
-				for(int compt=1; compt<hmSynonyme.get(synonyme.get(z)).size();compt++) { //pb tjrs abaca qui revient
-					//System.out.println(hmSynonyme.get(synonyme.get(z)).get(compt));
+				for(int compt=1; compt<hmSynonyme.get(synonyme.get(z)).size();compt++) { 
 					if(the.verifContientSyn(hashtable, hmSynonyme.get(synonyme.get(z)).get(compt))) {
 						//si la hashtableRedondance contient une clé = au synonyme cherché 
 						
 						hashtable.replace(synonyme.get(z),hashtable.get(synonyme.get(z))+1);
-						//System.out.println(hashtable.get(synonyme.get(z)));
-						//Alors on remplace la valeur de la hashtableRedondance en l'incrémentant +1
+	
 					}
 				}
 			}
