@@ -1,13 +1,18 @@
 graph {
-	
+		fill-color: #34495e ;
 }
 
 node {
-	text-style: bold-italic;
-	text-size: 20;
+	text-style: bold;
+	text-color:  #3498db;
+	fill-color:  #3498db;
+	text-size: 12;
 	text-background-mode: plain;
 	size: 10px, 15px;
 	shape: box;
-	stroke-mode: plain;
-	stroke-color: yellow;
+	z-index: 2;
+}
+
+edge{
+	fill-color: #3498db;
 }

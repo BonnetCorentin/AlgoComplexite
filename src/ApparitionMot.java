@@ -20,6 +20,7 @@ public class ApparitionMot {
 			 System.out.print(mot+" ");
 		 }
 		 System.out.println();
+		 System.out.println();
 		}
 			); 
 		} 
@@ -37,6 +38,7 @@ public class ApparitionMot {
 					    for (String s : synonyme){
 					        if(hashtable.containsKey(s) && !synonymeDejaPresent){
 					            hashtable.replace(s,hashtable.get(s)+1);
+					            //listePhrase[i].set(j, s);
 					            synonymeDejaPresent = true;
 					        }
 					    }
@@ -47,39 +49,12 @@ public class ApparitionMot {
 				    }
 				    else{
 				        hashtable.put(listePhrase[i].get(j),1);
-				}
+				    }
 				}
 				
 			}
 		}
-		if (synonyme != null)
-		for(int z=0; z<synonyme.size();z++) {
-			
-			if(hashtable.containsKey(synonyme.get(z))) { 
-				
-				for(int compt=1; compt<hmSynonyme.get(synonyme.get(z)).size();compt++) { 
-					if(the.verifContientSyn(hashtable, hmSynonyme.get(synonyme.get(z)).get(compt))) {
-						//si la hashtableRedondance contient une clé = au synonyme cherché 
-						
-						hashtable.replace(synonyme.get(z),hashtable.get(synonyme.get(z))+1);
-	
-					}
-				}
-			}
-		}
-		
-		//supprimerSynonyme(synonyme,hashtable);
 		return hashtable;
-	}
-	
-	static public Hashtable<String,Integer> supprimerSynonyme(ArrayList<String> synonyme, Hashtable<String,Integer> hashtable) {
-		Hashtable<String,Integer> hashtableSansSyn = hashtable;
-		for(int i=0; i<hashtable.size();i++) {
-				if(hashtable.containsKey(synonyme.get(i))){
-					hashtableSansSyn.remove(synonyme.get(i));
-			}
-		}
-		return hashtableSansSyn;
 	}
 	
 	static public Hashtable<String,Float> redondanceMotFrequence (Hashtable<String,Integer> redondance){

@@ -70,32 +70,30 @@ public class Thesaurus {
 	
 	public HashMap<String,ArrayList<String>> creationHmSynonyme(ArrayList<String>[] listePhrase){
 		String line;
-		int i=0;
-		String[] wordsLine = new String[3];
-		String[] wordsLine2;
+		String[] wordsLine;
+		String mot=new String ();
+	
 		debutTraitement ();
-		
 		try {	
 		    while ((line = bufferLectureT.readLine()) != null) {
+		    	wordsLine = line.toLowerCase().split("[|]");
 				ArrayList<String> listWord = new ArrayList<String>();
-		    	if(i==0) {
-		    		wordsLine = line.toLowerCase().split("[|1]");
-		    		i++;
+		    	if(wordsLine[1].charAt(0)>=49 && wordsLine[1].charAt(0)<=57) {
+		    		mot=wordsLine[0];
 		    	}
 		    	else {
-		    		wordsLine2 = line.toLowerCase().split("[|]");
-		    		for(int j=1;j<wordsLine2.length;j++) {
-		    			listWord.add(wordsLine2[j]);
+		    		wordsLine = line.toLowerCase().split("[|]");
+		    		for(int j=1;j<wordsLine.length;j++) {
+		    			listWord.add(wordsLine[j]);
 		    		}
 		    		Boolean estDansTexte = false;
 		    		for (int x=0;x<listePhrase.length;x++) {
-		    			if(listePhrase[x].contains(wordsLine[0].toLowerCase())) {
+		    			if(listePhrase[x].contains(mot.toLowerCase())) {
 		    				estDansTexte = true;
 		    			}
 		    		}
 		    		if (estDansTexte)
-		    			hm.put(wordsLine[0],listWord);
-		    		i=0;
+		    			hm.put(mot,listWord);
 		    	}
 		    }
 		}
