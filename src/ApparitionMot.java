@@ -38,7 +38,7 @@ public class ApparitionMot {
 					    for (String s : synonyme){
 					        if(hashtable.containsKey(s) && !synonymeDejaPresent){
 					            hashtable.replace(s,hashtable.get(s)+1);
-					            //listePhrase[i].set(j, s);
+					            listePhrase[i].set(j, s);
 					            synonymeDejaPresent = true;
 					        }
 					    }

@@ -33,7 +33,7 @@ public class Main {
 		try {
 				redondanceFrequence.forEach((k, v) -> { 
 				 System.out.println (k+" : "+v+"% fréquence du mot");
-				 if(redondanceFrequence.get(k)>15) {	//Supérieur a 15% d'apparition
+				 if(redondanceFrequence.get(k)>3) {	//Supérieur a 3% d'apparition
 					 if(graph.getNode(k)==null) {
 						 graph.addNode(k).addAttribute("ui.style","text-color:white; text-style: bold; fill-color: white; ");
 					 }
@@ -78,14 +78,14 @@ public class Main {
 						graph.addNode(b[1]);
 						graph.addEdge(b[0]+b[1], b[0], b[1]);	//ajoute les arrêtes
 						if(v==2){										// A CHANGER
-							graph.getEdge(b[0]+b[1]).addAttribute("ui.style", "fill-color:#FFA07A;");
+							graph.getEdge(b[0]+b[1]).addAttribute("ui.style", "fill-color:#f7ff00;");
 						}
 						if(v==3){										// A CHANGER
-							graph.getEdge(b[0]+b[1]).addAttribute("ui.style", "fill-color:#E9967A\r\n" + 
+							graph.getEdge(b[0]+b[1]).addAttribute("ui.style", "fill-color:#ffb500\r\n" + 
 									";");
 						}
 						if(v==4){										// A CHANGER
-							graph.getEdge(b[0]+b[1]).addAttribute("ui.style", "fill-color: #FA8072;");
+							graph.getEdge(b[0]+b[1]).addAttribute("ui.style", "fill-color: #ff6c00;");
 						}
 						if(v>4){										// A CHANGER
 							graph.getEdge(b[0]+b[1]).addAttribute("ui.style", "fill-color: red;");
